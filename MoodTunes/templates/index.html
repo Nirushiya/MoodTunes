@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodTunes | Music for Your Mood</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="/" class="logo">Mood<span>Tunes</span></a>
+        <p>Your mood. Your music.</p>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <p class="eyebrow">YOUR PERSONAL MUSIC COMPANION</p>
+
+            <h1>How are you <span>feeling today?</span></h1>
+
+            <p class="description">
+                Every mood has a melody. Choose how you feel
+                and discover English songs that match your mood.
+            </p>
+        </section>
+
+        <section class="mood-section">
+
+            <h2>Choose your mood</h2>
+            <p class="section-description">
+                Select the mood that describes you right now.
+            </p>
+
+            <form action="/recommend" method="POST">
+
+                <div class="mood-grid">
+
+                    <label class="mood-card">
+                        <input type="radio" name="mood" value="Happy" required>
+                        <span class="mood-icon">☀️</span>
+                        <span class="mood-name">Happy</span>
+                        <span class="mood-detail">Feel the joy</span>
+                    </label>
+
+                    <label class="mood-card">
+                        <input type="radio" name="mood" value="Sad">
+                        <span class="mood-icon">🌧️</span>
+                        <span class="mood-name">Sad</span>
+                        <span class="mood-detail">Songs for the soul</span>
+                    </label>
+
+                    <label class="mood-card">
+                        <input type="radio" name="mood" value="Romantic">
+                        <span class="mood-icon">❤️</span>
+                        <span class="mood-name">Romantic</span>
+                        <span class="mood-detail">Love is in the air</span>
+                    </label>
+
+                    <label class="mood-card">
+                        <input type="radio" name="mood" value="Relaxed">
+                        <span class="mood-icon">🌿</span>
+                        <span class="mood-name">Relaxed</span>
+                        <span class="mood-detail">Take it easy</span>
+                    </label>
+
+                    <label class="mood-card">
+                        <input type="radio" name="mood" value="Energetic">
+                        <span class="mood-icon">⚡</span>
+                        <span class="mood-name">Energetic</span>
+                        <span class="mood-detail">Turn it up</span>
+                    </label>
+
+                    <label class="mood-card">
+                        <input type="radio" name="mood" value="Motivated">
+                        <span class="mood-icon">🔥</span>
+                        <span class="mood-name">Motivated</span>
+                        <span class="mood-detail">Chase your dreams</span>
+                    </label>
+
+                </div>
+
+                <button type="submit" class="recommend-button">
+                    Find My Songs <span>→</span>
+                </button>
+
+            </form>
+
+        </section>
+{% if recommendations %}
+<section class="results-section">
+    <h2>Your Mood, Your Music</h2>
+
+    <p class="section-description">
+        Songs recommended for your {{ selected_mood.lower() }} mood.
+    </p>
+
+    <div class="results-grid">
+        {% for song in recommendations %}
+        <article class="song-card">
+            <div class="song-cover">
+    <span>♫</span>
+</div>
+
+            <div class="song-info">
+                <h3>{{ song.title }}</h3>
+                <p>{{ song.artist }}</p>
+
+                <div class="song-tags">
+    <span>{{ song.genre }}</span>
+    <span>{{ song.mood }}</span>
+</div>
+
+<div class="music-buttons">
+
+    <!-- YouTube Button -->
+    <a
+        class="listen-button youtube-button"
+        href="https://www.youtube.com/results?search_query={{ (song.title ~ ' ' ~ song.artist)|urlencode }}"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        ▶ YouTube
+    </a>
+
+    <!-- Spotify Button -->
+    <a
+        class="listen-button spotify-button"
+        href="https://open.spotify.com/search/{{ (song.title ~ ' ' ~ song.artist)|urlencode }}"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        ♫ Spotify
+    </a>
+
+</div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+        <footer>
+            <p>Made with music and a little machine learning.</p>
+            <p class="footer-small">MoodTunes · Discover your next favourite song</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
+

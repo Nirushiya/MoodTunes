@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: #101014;
+    color: #f5f5f7;
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    border-bottom: 1px solid #29292f;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 27px;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #b68cff;
+}
+
+.navbar p {
+    color: #a4a4b0;
+    font-size: 14px;
+}
+
+.container {
+    width: 84%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 75px 0 45px;
+}
+
+.eyebrow {
+    color: #b68cff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.25;
+    margin-bottom: 20px;
+}
+
+h1 span {
+    color: #b68cff;
+    display: block;
+}
+
+.description {
+    max-width: 580px;
+    margin: auto;
+    color: #a4a4b0;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.mood-section {
+    padding: 25px 0 60px;
+}
+
+.mood-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.section-description {
+    color: #a4a4b0;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.mood-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.mood-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px;
+    background: #19191f;
+    border: 1px solid #303039;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.mood-card:hover {
+    border-color: #b68cff;
+    transform: translateY(-4px);
+    background: #201c29;
+}
+
+.mood-card:has(input:checked) {
+    border-color: #b68cff;
+    background: #272033;
+    box-shadow: 0 0 0 1px #b68cff;
+}
+
+.mood-card input {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    accent-color: #b68cff;
+    width: 17px;
+    height: 17px;
+}
+
+.mood-icon {
+    font-size: 32px;
+    margin-bottom: 18px;
+}
+
+.mood-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.mood-detail {
+    color: #a4a4b0;
+    font-size: 13px;
+}
+
+.recommend-button {
+    display: block;
+    margin: 35px auto 0;
+    padding: 16px 30px;
+    border: none;
+    border-radius: 10px;
+    background: #b68cff;
+    color: #17121f;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.recommend-button:hover {
+    background: #c7a8ff;
+    transform: translateY(-2px);
+}
+
+.recommend-button span {
+    margin-left: 12px;
+}
+
+footer {
+    border-top: 1px solid #29292f;
+    text-align: center;
+    padding: 25px 0;
+    color: #a4a4b0;
+    font-size: 13px;
+}
+
+.footer-small {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #777783;
+}
+
+@media (max-width: 750px) {
+    .container {
+        width: 90%;
+    }
+
+    .mood-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        padding-top: 55px;
+    }
+
+    .navbar {
+        padding: 20px 5%;
+    }
+}
+
+@media (max-width: 450px) {
+    .mood-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar p {
+        font-size: 11px;
+    }
+}
+
+.results-section {
+    padding: 35px 0 60px;
+    border-top: 1px solid #29292f;
+}
+
+.results-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.song-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid #303039;
+    border-radius: 14px;
+    background: #19191f;
+}
+
+.song-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    color: white;
+    font-size: 42px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.song-cover span {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.song-info h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.song-info p {
+    color: #a4a4b0;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.song-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.song-tags span {
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #30263f;
+    color: #d4bdff;
+    font-size: 11px;
+}
+
+@media (max-width: 650px) {
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.listen-button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 9px 14px;
+    background: #b68cff;
+    color: #17121f;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.listen-button:hover {
+    background: #c7a8ff;
+    transform: translateY(-2px);
+}
+/* Arrange music platform buttons */
+.music-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+/* Common button styling */
+.listen-button {
+    display: inline-block;
+    padding: 9px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+/* YouTube button */
+.youtube-button {
+    background: #ff3333;
+    color: white;
+}
+
+.youtube-button:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+}
+
+/* Spotify button */
+.spotify-button {
+    background: #1ed760;
+    color: #101010;
+}
+
+.spotify-button:hover {
+    background: #1fba59;
+    transform: translateY(-2px);
+}
